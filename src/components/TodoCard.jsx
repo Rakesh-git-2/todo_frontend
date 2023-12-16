@@ -28,6 +28,10 @@ export function TodoCard({ todo, refresh }) {
     };
   }, [todo]);
 
+  const handleUpdate = (data) => {
+    updateTodo(data, setModalOpen);
+  };
+
   const formatUTCDate = (utcTimestamp) => {
     const options = {
       year: "numeric",
@@ -127,7 +131,7 @@ export function TodoCard({ todo, refresh }) {
               className="bg-white p-8 rounded shadow-lg z-10 "
             >
               <InputArea
-                handleSubmit={updateTodo}
+                handleSubmit={handleUpdate}
                 todo={todo}
                 type="update"
               ></InputArea>

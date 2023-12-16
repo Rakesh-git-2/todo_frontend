@@ -17,6 +17,7 @@ function InputArea({
       <form
         style={{ width: "100%" }}
         onSubmit={(e) => {
+          e.preventDefault();
           let newErrors = [];
           console.log(todo);
           if (input.deadline === null) {
