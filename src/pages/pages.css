@@ -2,3 +2,9 @@
   /* background-image: url("/images/bg-desktop-light.jpg"); */
   background-color: #fafafa;
 }
+
+.auth {
+  max-width: 500px;
+  padding: 20px;
+  margin: auto;
+}
