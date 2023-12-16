@@ -29,7 +29,7 @@ export function TodoCard({ todo, refresh }) {
   }, [todo]);
 
   const handleUpdate = (data) => {
-    updateTodo(data, setModalOpen);
+    updateTodo(data, setModalOpen, refresh);
   };
 
   const formatUTCDate = (utcTimestamp) => {

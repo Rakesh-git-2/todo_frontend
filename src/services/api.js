@@ -29,8 +29,11 @@ const addTodo = (payload, cb) => {
   http.post(baseURL + "todos/addTodo/", payload).then((data) => cb());
 };
 
-const updateTodo = (payload, cb) => {
-  http.post(baseURL + "todos/updateTodo/", payload).then((data) => cb(false));
+const updateTodo = (payload, cb1, cb2) => {
+  http.post(baseURL + "todos/updateTodo/", payload).then((data) => {
+    cb1(false);
+    cb2();
+  });
 };
 
 const getTodos = (cb) => {
