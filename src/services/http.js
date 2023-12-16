@@ -1,14 +1,14 @@
-import Axios, { AxiosRequestConfig } from 'axios';
-import {redirect} from 'react-router-dom';
+import Axios, { AxiosRequestConfig } from "axios";
+import { redirect } from "react-router-dom";
 
 const http = Axios.create({
   baseURL: process.env.REACT_APP_BACKEND_URL,
 });
 
 http.interceptors.request.use((config) => {
-  const token = window.localStorage.getItem('token');
+  const token = window.localStorage.getItem("token");
   if (!token) return config;
-  if (config?.headers) {
+  if (config?.headers && token !== undefined) {
     config.headers = { Authorization: `Token ${token}` };
   }
   return config;
@@ -23,7 +23,7 @@ http.interceptors.response.use(
 
     if (isAxiosError && response && response.status === 401) {
       // User redirection rule for login page
-      redirect('/login')
+      redirect("/login");
       return Promise.reject(error);
     }
     if (isAxiosError && response && response.status === 403) {
@@ -35,4 +35,3 @@ http.interceptors.response.use(
 );
 
 export default http;
-
