@@ -14,7 +14,7 @@ export function TodoCard({ todo, refresh }) {
   const toggleCheckbox = () => {
     if (!isChecked) {
       todo.status = "completed";
-      updateTodo(todo);
+      updateTodo(todo, () => {}, refresh);
       setIsChecked(true);
     }
   };
