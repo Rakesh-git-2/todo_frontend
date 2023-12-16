@@ -11,6 +11,7 @@ fields.forEach((field) => (fieldsState[field.id] = ""));
 
 export default function Login() {
   const [loginState, setLoginState] = useState(fieldsState);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setLoginState({ ...loginState, [e.target.id]: e.target.value });
@@ -23,7 +24,7 @@ export default function Login() {
 
   //Handle Login API Integration here
   const authenticateUser = () => {
-    login(loginState, setLogin);
+    login(loginState, setLogin, setError);
   };
 
   const setLogin = (token) => {
@@ -51,6 +52,7 @@ export default function Login() {
         ))}
       </div>
       <FormAction handleSubmit={handleSubmit} text="Login" />
+      {error && <p className="text-red-500">{error}</p>}
     </form>
   );
 }

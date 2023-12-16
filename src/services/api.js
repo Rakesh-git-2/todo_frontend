@@ -8,10 +8,11 @@ const signup = (payload, cb, error) => {
     .catch((err) => error(err.response.data.error));
 };
 
-const login = (payload, cb) => {
+const login = (payload, cb, error) => {
   http
     .post(baseURL + "todos/login/", payload)
-    .then((data) => cb(data.data.token));
+    .then((data) => cb(data.data.token))
+    .catch((err) => error(err.response.data.error));
 };
 
 const logout = () => {
