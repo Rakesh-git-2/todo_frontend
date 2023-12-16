@@ -7,8 +7,11 @@ const http = Axios.create({
 
 http.interceptors.request.use((config) => {
   const token = window.localStorage.getItem("token");
+  if (config.url.includes("signup") || config.url.includes("login")) {
+    return config;
+  }
   if (!token) return config;
-  if (config?.headers && token !== undefined) {
+  if (config?.headers) {
     config.headers = { Authorization: `Token ${token}` };
   }
   return config;
